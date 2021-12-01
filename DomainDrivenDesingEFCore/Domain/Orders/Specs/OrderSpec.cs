@@ -32,6 +32,13 @@ namespace DomainDrivenDesingEFCore.Domain.Orders.Specs
         }
 
 
+        public OrderSpec ShippedOrders(DateTime from, DateTime to)
+        {
+            AddCriteria(x => x.ShippedDate>= from  && x.ShippedDate <= to);
+            return this;
+        }
+
+
 
         public static OrderSpec Instance()
         {

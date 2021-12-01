@@ -60,6 +60,8 @@ namespace DomainDrivenDesingEFCore
             services.AddControllersWithViews();
             // MediatrDomainEventDispatcher current assembly ugulamaya gösterdik.
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddDbContext<OrderContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString ("TestConnection")));
 
             services.AddMediatR(typeof(MediatrDomainEventDispatcher).GetTypeInfo().Assembly);
