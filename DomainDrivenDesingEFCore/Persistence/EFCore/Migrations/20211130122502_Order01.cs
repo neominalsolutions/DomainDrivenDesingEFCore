@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DomainDrivenDesingEFCore.Persistance.EFCore.Migrations
+namespace DomainDrivenDesingEFCore.Persistence.EFCore.Migrations
 {
     public partial class Order01 : Migration
     {

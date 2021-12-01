@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DomainDrivenDesingEFCore.Persistance.EFCore.Configurations
+namespace DomainDrivenDesingEFCore.Persistence.EFCore.Configurations
 {
     public class OrderMapping : IEntityTypeConfiguration<Order>
     {

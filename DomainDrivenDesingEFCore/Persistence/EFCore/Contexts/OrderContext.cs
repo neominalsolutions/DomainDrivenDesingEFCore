@@ -1,6 +1,6 @@
 ﻿using DomainDrivenDesingEFCore.Domain.Orders.Models;
 using DomainDrivenDesingEFCore.Domain.SeedWork;
-using DomainDrivenDesingEFCore.Persistance.EFCore.Configurations;
+using DomainDrivenDesingEFCore.Persistence.EFCore.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DomainDrivenDesingEFCore.Persistance.EFCore.Contexts
+namespace DomainDrivenDesingEFCore.Persistence.EFCore.Contexts
 {
     public class OrderContext: DbContext
     {

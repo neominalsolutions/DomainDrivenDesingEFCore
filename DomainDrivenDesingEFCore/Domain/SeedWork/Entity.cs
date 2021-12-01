@@ -8,7 +8,7 @@ namespace DomainDrivenDesingEFCore.Domain.SeedWork
     public abstract class Entity : IEntity
     {
         private List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
-
+        public bool IsDeleted { get; set; } = false;
 
         public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents;
 

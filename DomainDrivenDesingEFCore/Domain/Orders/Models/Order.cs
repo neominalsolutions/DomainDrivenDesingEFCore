@@ -20,6 +20,12 @@ namespace DomainDrivenDesingEFCore.Domain.Orders.Models
         
     }
 
+    //public class DeleterEntity : Entity, IDeleter
+    //{
+    //    public bool IsDeleted { get; set; }
+
+    //}
+
     // Root Entity
     public class Order: Entity, IAggregateRoot
     {
@@ -37,6 +43,7 @@ namespace DomainDrivenDesingEFCore.Domain.Orders.Models
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
         public ShipAddress ShipAddress { get; private set; }
+        public bool IsDeleted { get; set; }
 
         /// <summary>
         /// AggregateRoot için Repository işlemlerinde private boş constructor kullandık.

@@ -1,10 +1,11 @@
 using DomainDrivenDesingEFCore.Domain.Orders.Models;
 using DomainDrivenDesingEFCore.Domain.Orders.Repositories;
 using DomainDrivenDesingEFCore.Domain.Orders.Services;
+using DomainDrivenDesingEFCore.Domain.Orders.Specs;
 using DomainDrivenDesingEFCore.Domain.Orders.ValueObjects;
 using DomainDrivenDesingEFCore.Domain.SeedWork;
-using DomainDrivenDesingEFCore.Persistance.EFCore.Contexts;
-using DomainDrivenDesingEFCore.Persistance.EFCore.Repositories;
+using DomainDrivenDesingEFCore.Persistence.EFCore.Contexts;
+using DomainDrivenDesingEFCore.Persistence.EFCore.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,11 @@ namespace DomainDrivenDesingEFCore
             //_orderRepository.Add(o);
             //_orderRepository.Save();
 
+           
+            var orderSpec = OrderSpec.Instance().OrderFilterCustomer("1").OrderPaging(10,2);
+            
+
+
             Configuration = configuration;
         }
 
@@ -61,7 +67,7 @@ namespace DomainDrivenDesingEFCore
             // IEventDispatcher kullanýrsam MediatrDomainEventDispatcher instance al
             services.AddTransient<IEventDispatcher, MediatrDomainEventDispatcher>();
 
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
             services.AddScoped<IOrderReservationDomainService, OrderReservationService>();
 
 

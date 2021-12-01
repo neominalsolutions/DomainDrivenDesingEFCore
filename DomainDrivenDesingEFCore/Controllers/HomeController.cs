@@ -1,6 +1,7 @@
 ﻿using DomainDrivenDesingEFCore.Domain.Orders.Models;
 using DomainDrivenDesingEFCore.Domain.Orders.Repositories;
 using DomainDrivenDesingEFCore.Domain.Orders.Services;
+using DomainDrivenDesingEFCore.Domain.Orders.Specs;
 using DomainDrivenDesingEFCore.Domain.Orders.ValueObjects;
 using DomainDrivenDesingEFCore.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -26,27 +27,33 @@ namespace DomainDrivenDesingEFCore.Controllers
             _oR = oR;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-          
+
 
             var s = ShipAddress.Create("İzmir", "Türkiye");
             var o = Order.Create(s, "1");
 
-        
+          
+
+            await _orderRepository.FindAsync(x => x.OrderState == (int)OrderStates.Ordered);
+            var orderSpec = OrderSpec.Instance().OrderFilterCustomer("1");
+            await _orderRepository.FindAsync(orderSpec);
+
+
             o.AddOrderItem(quantity: 1, listPrice: 14M);
             o.AddOrderItem(quantity: 2, listPrice: 15M);
-            _orderRepository.Add(o);
+             await _orderRepository.AddAsync(o);
 
             o.ApplyReservation(_oR);
 
-            
-            _orderRepository.Save();
+
+            await _orderRepository.SaveAsync();
 
 
 
-            
+
 
             return View();
         }
